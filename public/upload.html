@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Video</title>
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/video.css">
+  <link rel="stylesheet" href="css/upload.css">
+</head>
+<body>
+  <nav class="navigation-section">
+    <div class="leftnav">
+      <a href="index.html" aria-label="Home">
+        <img src="button/HomeButton.png" alt="Home">
+      </a>
+      <a href="videos.html" aria-label="Videos">
+        <img src="button/VideoButton.png" alt="Videos">
+      </a>
+      <a href="upload.html" aria-label="Upload">
+        <img src="button/UploadButton.png" alt="Upload">
+      </a> 
+    </div>
+  </nav>
+
+  <main class="content-wrapper" style="margin-top: 80px; text-align: center;">
+    <h2>Upload a Video</h2>
+    
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label for="videoTitle">Video Title:</label>
+      <input type="text" id="videoTitle" name="title" required><br><br>
+      
+      <label for="videoFile">Select Video:</label>
+      <input type="file" id="videoFile" name="video" accept="video/*" required><br><br>
+    
+      <label for="thumbnailFile">Select Thumbnail:</label>
+      <input type="file" id="thumbnailFile" name="thumbnail" accept="image/*" required><br><br>
+    
+      <button type="submit">Upload</button>
+    </form>
+    
+    <script>
+      document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const videoFile = document.getElementById('videoFile').files[0];
+        const thumbnailFile = document.getElementById('thumbnailFile').files[0];
+        const title = document.getElementById('videoTitle').value;
+
+        if (!videoFile || !thumbnailFile || !title) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("video", videoFile);
+        formData.append("thumbnail", thumbnailFile);
+        formData.append("title", title);
+
+        fetch("/upload", {
+          method: "POST",
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          alert("Files uploaded successfully!");
+          document.getElementById('uploadForm').reset();
+        })
+        .catch(error => {
+          console.error("Upload error:", error);
+          alert("Error uploading files.");
+        });
+      });
+    </script>    
+    
+    <h3>Uploaded Videos</h3>
+    <button id="clearAllBtn" style="margin-bottom: 10px; background: #e74c3c; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear All Videos</button>
+    <div class="video-list-container" id="videoList"></div>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

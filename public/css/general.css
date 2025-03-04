@@ -1,0 +1,29 @@
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: white;
+}
+
+/* Back-to-Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #f39c12;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+  font-size: 18px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+#backToTop:hover {
+  opacity: 0.8;
+}

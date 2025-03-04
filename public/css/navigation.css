@@ -1,0 +1,132 @@
+/* Navigation Bar */
+.navigation-section {
+  background-color: #222;
+  padding: 12px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Left & Right Navigation */
+.leftnav, .rightnav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.leftnav a, .rightnav a {
+  text-decoration: none;
+}
+
+.leftnav img, .rightnav img {
+  height: 40px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.leftnav img:hover, .rightnav img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* Search Bar */
+.SearchBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.SearchBar input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.SearchBar input:focus {
+  border: 2px solid #f39c12;
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(243, 156, 18, 0.5);
+}
+
+/* Mobile Navigation Toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-toggle:hover {
+  transform: rotate(90deg);
+}
+
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  position: relative;
+  transition: background 0.3s ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+/* Mobile Navigation (Responsive) */
+@media (max-width: 768px) {
+  .leftnav, .rightnav {
+      display: none;
+      flex-direction: column;
+      background-color: #222;
+      position: absolute;
+      top: 60px;
+      width: 100%;
+      padding: 10px 0;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
+
+  .menu-toggle.active .hamburger {
+      background-color: transparent;
+  }
+
+  .menu-toggle.active .hamburger::before {
+      transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active .hamburger::after {
+      transform: rotate(-45deg) translate(5px, -5px);
+  }
+}

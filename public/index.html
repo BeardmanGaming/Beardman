@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beardman Gaming</title>
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation SECTION -->
+  <nav class="navigation-section">
+    <div class="leftnav">
+      <a href="index.html" aria-label="Home">
+        <img src="button/HomeButton.png" alt="Home">
+      </a>
+      <a href="videos.html" aria-label="Videos">
+        <img src="button/VideoButton.png" alt="Videos">
+      </a>
+      <a href="upload.html" aria-label="Upload">
+        <img src="button/UploadButton.png" alt="Upload">
+      </a>      
+    </div>
+    
+    <!-- Hamburger for mobile -->
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+    
+    <!-- Search Bar -->
+    <form class="SearchBar" onsubmit="event.preventDefault();">
+      <input type="text" id="searchInput" placeholder="Search videos..." aria-label="Search videos">
+    </form>
+
+    <div class="rightnav">
+      <a href="https://www.youtube.com/@BeardmanG" aria-label="YouTube">
+        <img src="button/YoutubeButton.png" alt="YouTube">
+      </a>
+      <a href="https://discord.com/" aria-label="Discord">
+        <img src="button/DiscordButton.png" alt="Discord">
+      </a>
+      <a href="https://www.instagram.com/beardman.gaming/" aria-label="Instagram">
+        <img src="button/InstagramButton.png" alt="Instagram">
+      </a>
+    </div>
+  </nav>
+
+  <!-- VIDEO SECTION -->
+  <section class="video-section">
+    <div class="video-grid" id="videoGrid">
+      <!-- Videos will be dynamically loaded here -->
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
